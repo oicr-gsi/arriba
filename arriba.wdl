@@ -2,21 +2,20 @@ version 1.0
 
 workflow arriba {
   input {
-    File Bam
+    File inputBam
   }
 
   }
 
   parameter_meta {
-    inputFqs: "Array of fastq read pairs"
-    chimeric: "Path to Chimeric.out.junction"
+    inputBam: "Bam output from STAR"
   }
 
-  call runArriba { input: fastq1 = fastq1, fastq2 = fastq2, chimeric = chimeric }
+  call runArriba { input: inputBam = inputBam }
 
   output {
-    File fusions = runArriba.fusionPredictions
-    File Discardedfusions = runStarFusion.fusionDiscarded
+    File fusionsPredictions = runArriba.fusionPredictions
+    File fusionDiscarded = runArriba.fusionDiscarded
     }
 
   meta {
@@ -36,35 +35,36 @@ workflow arriba {
 task runArriba {
   input {
     File Bam
-    String starFusion = "$STAR_FUSION_ROOT/STAR-Fusion"
-    String modules = "star-fusion/1.8.1 star-fusion-genome/1.8.1-hg38"
-    String genomeDir = "$STAR_FUSION_GENOME_ROOT/ctat_genome_lib_build_dir"
+    String arriba = "$ARRIBA_ROOT/arriba"
+    String modules = "arriba/1.2 gencode/31 hg38/p12"
+    String gencode = "$GENCODE_ROOT/gencode.v31.annotation.gtf"
+    String genome = "$HG38_ROOT/hg38_random.fa"
+    String blacklist = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_2018-11-04.tsv.gz"
+    String cosmic = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_2018-11-04.tsv.gz"
     Int threads = 8
     Int jobMemory = 64
     Int timeout = 72
   }
 
   parameter_meta {
-    fastq1: "Array of paths to the fastq files for read 1"
-    fastq2: "Array of paths to the fastq files for read 2"
-    chimeric: "Path to Chimeric.out.junction"
-    starFusion: "Name of the STAR-Fusion binary"
-    modules: "Names and versions of STAR-Fusion and STAR-Fusion genome to load"
-    genomeDir: "Path to the STAR-Fusion genome directory"
+    Bam: "Path to Bam file output from star workflow"
+    arriba: "Name of the Arriba binary"
+    modules: "Names and versions of modules to load"
+    gencode: "Path to gencode annotation file"
+    genome : "Path to loaded genome"
     threads: "Requested CPU threads"
     jobMemory: "Memory allocated for this job"
     timeout: "Hours before task timeout"
   }
 
-  String outdir = "STAR-Fusion_outdir"
+
 
   command <<<
-      "~{starFusion}" \
-      --genome_lib_dir "~{genomeDir}" \
-      --left_fq ~{sep="," fastq1} \
-      --right_fq ~{sep="," fastq2} \
-      --examine_coding_effect \
-      --CPU "~{threads}" --chimeric_junction "~{chimeric}"
+      "~{arriba}" \
+      -x "~{Bam}" \
+      -o fusions.tsv -O fusions.discarded.tsv \
+      -a "~{genome}" -g "~{gencode}" -b "~{blacklist}" \
+      -T -P -k "~{cosmic}"
   >>>
 
   runtime {
@@ -75,18 +75,15 @@ task runArriba {
   }
 
   output {
-      File fusionPredictions =          "~{outdir}/star-fusion.fusion_predictions.tsv"
-      File fusionPredictionsAbridged =  "~{outdir}/star-fusion.fusion_predictions.abridged.tsv"
-      File fusionCodingEffects =        "~{outdir}/star-fusion.fusion_predictions.abridged.coding_effect.tsv"
+      File fusionPredictions = "fusions.tsv"
+      File fusionDiscarded =  "fusions.discarded.tsv"
   }
 
   meta {
     output_meta: {
-      fusionPredictions:          "Raw fusion output tsv",
-      fusionPredictionsAbridged:  "Abridged fusion output tsv",
-      fusionCodingEffects:        "Annotated fusion output tsv"
+      fusionPredictions: "fusion output tsv",
+      fusionDiscarded:   "discarded fusion output tsv"
     }
   }
 
 }
-
