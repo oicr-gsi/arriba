@@ -5,7 +5,6 @@ workflow arriba {
     File inputBam
   }
 
-  }
 
   parameter_meta {
     inputBam: "Bam output from STAR"
@@ -34,7 +33,7 @@ workflow arriba {
 
 task runArriba {
   input {
-    File Bam
+    File inputBam
     String arriba = "$ARRIBA_ROOT/arriba"
     String modules = "arriba/1.2 gencode/31 hg38/p12"
     String gencode = "$GENCODE_ROOT/gencode.v31.annotation.gtf"
@@ -47,7 +46,7 @@ task runArriba {
   }
 
   parameter_meta {
-    Bam: "Path to Bam file output from star workflow"
+    inputBam: "Path to Bam file output from star workflow"
     arriba: "Name of the Arriba binary"
     modules: "Names and versions of modules to load"
     gencode: "Path to gencode annotation file"
@@ -61,7 +60,7 @@ task runArriba {
 
   command <<<
       "~{arriba}" \
-      -x "~{Bam}" \
+      -x "~{inputBam}" \
       -o fusions.tsv -O fusions.discarded.tsv \
       -a "~{genome}" -g "~{gencode}" -b "~{blacklist}" \
       -T -P -k "~{cosmic}"
