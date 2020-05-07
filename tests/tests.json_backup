@@ -1,0 +1,4 @@
+{
+  "testWorkflow.input": "/path/to/file",
+  "testWorkflow.outputFileNamePrefix": "FILE_NAME"
+}

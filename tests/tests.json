@@ -1,3 +1,4 @@
 {
-  "arriba.inputBam": "/.mounts/labs/TGL/gsi/afortuna/pipeline/data/TGL24/RNASEQ/Seqware_STAR/EPT2007.Aligned.sortedByCoord.out.bam"
+  "arriba.inputBam": "/.mounts/labs/TGL/gsi/afortuna/pipeline/data/TGL24/RNASEQ/Seqware_STAR/EPT2007.Aligned.sortedByCoord.out.bam",
+  "arriba.outputFileNamePrefix": "EPT2007"
 }
