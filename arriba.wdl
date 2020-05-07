@@ -3,11 +3,13 @@ version 1.0
 workflow arriba {
   input {
     File inputBam
+    String outputFileNamePrefix
   }
 
 
   parameter_meta {
     inputBam: "Bam output from STAR"
+    outputFileNamePrefix: "Prefix for output files"
   }
 
   call runArriba { input: inputBam = inputBam }
@@ -39,7 +41,8 @@ task runArriba {
     String gencode = "$GENCODE_ROOT/gencode.v31.annotation.gtf"
     String genome = "$HG38_ROOT/hg38_random.fa"
     String blacklist = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_2018-11-04.tsv.gz"
-    String cosmic = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_2018-11-04.tsv.gz"
+    String cosmic = "$ARRIBA_ROOT/share/database/CosmicFusionExport.tsv"
+    String outputFileNamePrefix = outputFileNamePrefix
     Int threads = 8
     Int jobMemory = 64
     Int timeout = 72
@@ -48,6 +51,7 @@ task runArriba {
   parameter_meta {
     inputBam: "Path to Bam file output from star workflow"
     arriba: "Name of the Arriba binary"
+    outputFileNamePrefix: "Prefix for output files"
     modules: "Names and versions of modules to load"
     gencode: "Path to gencode annotation file"
     genome : "Path to loaded genome"
@@ -61,7 +65,7 @@ task runArriba {
   command <<<
       "~{arriba}" \
       -x "~{inputBam}" \
-      -o fusions.tsv -O fusions.discarded.tsv \
+      -o "~{outputFileNamePrefix}".fusions.tsv -O "~{outputFileNamePrefix}".fusions.discarded.tsv \
       -a "~{genome}" -g "~{gencode}" -b "~{blacklist}" \
       -T -P -k "~{cosmic}"
   >>>
@@ -74,8 +78,8 @@ task runArriba {
   }
 
   output {
-      File fusionPredictions = "fusions.tsv"
-      File fusionDiscarded =  "fusions.discarded.tsv"
+      File fusionPredictions = "~{outputFileNamePrefix}.fusions.tsv"
+      File fusionDiscarded =   "~{outputFileNamePrefix}.fusions.discarded.tsv"
   }
 
   meta {
