@@ -3,7 +3,7 @@ version 1.0
 workflow arriba {
   input {
     File inputBam
-    String outputFileNamePrefix
+    String outputFileNamePrefix = basename(inputBam, '.Aligned.sortedByCoord.out.bam')
   }
 
 
