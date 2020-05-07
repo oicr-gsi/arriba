@@ -34,7 +34,7 @@ workflow arriba {
 task runArriba {
   input {
     File inputBam
-    String arriba = "$ARRIBA_ROOT/arriba"
+    String arriba = "$ARRIBA_ROOT/bin/arriba"
     String modules = "arriba/1.2 gencode/31 hg38/p12"
     String gencode = "$GENCODE_ROOT/gencode.v31.annotation.gtf"
     String genome = "$HG38_ROOT/hg38_random.fa"
