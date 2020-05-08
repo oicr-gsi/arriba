@@ -42,7 +42,7 @@ task runArriba {
     String genome = "$HG38_ROOT/hg38_random.fa"
     String blacklist = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_2018-11-04.tsv.gz"
     String cosmic = "$ARRIBA_ROOT/share/database/CosmicFusionExport.tsv"
-    String outputFileNamePrefix = outputFileNamePrefix
+    String outputFileNamePrefix
     Int threads = 8
     Int jobMemory = 64
     Int timeout = 72
@@ -54,6 +54,8 @@ task runArriba {
     outputFileNamePrefix: "Prefix for output files"
     modules: "Names and versions of modules to load"
     gencode: "Path to gencode annotation file"
+    blacklist: "List of fusions which are seen in normal tissue or artefacts"
+    cosmic: "Fusions observed in cosmic database"
     genome : "Path to loaded genome"
     threads: "Requested CPU threads"
     jobMemory: "Memory allocated for this job"
