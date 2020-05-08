@@ -42,7 +42,7 @@ task runArriba {
     String genome = "$HG38_ROOT/hg38_random.fa"
     String blacklist = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_2018-11-04.tsv.gz"
     String cosmic = "$ARRIBA_ROOT/share/database/CosmicFusionExport.tsv"
-    String outputFileNamePrefix = outputFileNamePrefix
+    String outputFileNamePrefix 
     Int threads = 8
     Int jobMemory = 64
     Int timeout = 72
