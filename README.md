@@ -22,7 +22,6 @@ java -jar cromwell.jar run arriba.wdl --inputs inputs.json
 Parameter|Value|Description
 ---|---|---
 `inputBam`|File|Bam output from STAR
-`runArriba.outputFileNamePrefix`|String|Prefix for output files
 
 
 #### Optional workflow parameters:
@@ -39,7 +38,6 @@ Parameter|Value|Default|Description
 `runArriba.gencode`|String|"$GENCODE_ROOT/gencode.v31.annotation.gtf"|Path to gencode annotation file
 `runArriba.genome`|String|"$HG38_ROOT/hg38_random.fa"|Path to loaded genome
 `runArriba.blacklist`|String|"$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_2018-11-04.tsv.gz"|List of fusions which are seen in normal tissue or artefacts
-`runArriba.cosmic`|String|"$ARRIBA_ROOT/share/database/CosmicFusionExport.tsv"|Fusions observed in cosmic database
 `runArriba.threads`|Int|8|Requested CPU threads
 `runArriba.jobMemory`|Int|64|Memory allocated for this job
 `runArriba.timeout`|Int|72|Hours before task timeout
