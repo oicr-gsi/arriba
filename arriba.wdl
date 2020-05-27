@@ -1,7 +1,12 @@
 version 1.0
 
-workflow arriba {
+struct InputGroup {
+  File fastqR1
+  File fastqR2
+  String readGroup
+}
 
+workflow arriba {
 
   input {
     Array[InputGroup] inputGroups
@@ -30,7 +35,7 @@ workflow arriba {
     File sortAlignBam           = runArriba.sortAlignBam
     File sortAlignIndex         = runArriba.sortAlignIndex
     File fusionFigure           = runArriba.fusionFigure
-    }
+  }
 
   meta {
     author: "Alexander Fortuna"
@@ -38,17 +43,17 @@ workflow arriba {
     description: "Workflow that takes the Bam output from STAR and detects RNA-seq fusion events."
     dependencies: [
      {
-      name: "arriba/1.2",
-      url: "https://github.com/suhrig/arriba"
+       name: "arriba/1.2",
+       url: "https://github.com/suhrig/arriba"
      },
      {
-        name: "star/2.7.3a",
-        url: "https://github.com/alexdobin/STAR"
-      },
-      {
-         name: "samtools/1.9",
-         url: "http://www.htslib.org/"
-       }
+       name: "star/2.7.3a",
+       url: "https://github.com/alexdobin/STAR"
+     },
+     {
+       name: "samtools/1.9",
+       url: "http://www.htslib.org/"
+     }
     ]
   }
 }
@@ -61,8 +66,7 @@ task runArriba {
     File?  structuralVariants
     String index = "$HG38_STAR_INDEX100_ROOT"
     String draw = "$ARRIBA_ROOT/bin/draw_fusions.R"
-    String samtools = "$SAMTOOLS_ROOT/bin/samtools"
-    String modules = "arriba/1.2 hg38-star-index100/2.7.3a samtools/1.9 rarriba/0.1 hg38-cosmic-fusion/v91"
+    String modules = "arriba/1.2 hg38-star-index100/2.7.3a samtools/1.9 rarriba/0.1 hg38-cosmic-fusion/v91 star/2.7.3a"
     String gencode = "$GENCODE_ROOT/gencode.v31.annotation.gtf"
     String genome = "$HG38_ROOT/hg38_random.fa"
     String cytobands = "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_2018-02-23.tsv"
@@ -92,7 +96,6 @@ task runArriba {
     outputFileNamePrefix: "Prefix for filename"
     index: "Path to STAR index"
     draw: "path to arriba draw command"
-    samtools: "path to samtools binary"
     modules: "Names and versions of modules to load"
     gencode: "Path to gencode annotation file"
     domains: "protein domains for annotation"
@@ -116,13 +119,10 @@ task runArriba {
     timeout: "Hours before task timeout"
   }
 
-  String alignBam_ = "~{outputFileNamePrefix}.Aligned.out.bam"
-  String alignBamSorted_ = "~{outputFileNamePrefix}.Aligned.sorted.out.bam"
-
   command <<<
       set -euo pipefail
 
-      star \
+      STAR \
       --readFilesIn ~{sep="," read1s} ~{sep="," read2s} \
       --outSAMattrRGline ~{sep=" , " readGroups} \
       --readFilesCommand zcat \
@@ -151,7 +151,6 @@ task runArriba {
       Rscript ~{draw} --annotation=~{gencode} --fusions=~{outputFileNamePrefix}.fusions.tsv \
       --output=~{outputFileNamePrefix}.fusions.pdf --alignments=~{outputFileNamePrefix}.Aligned.sortedByCoord.out.bam \
       --cytobands=~{cytobands} --proteinDomains=~{domains}
-
   >>>
 
   runtime {
@@ -172,19 +171,15 @@ task runArriba {
 
   meta {
     output_meta: {
-      fusionPredictions: "fusion output tsv",
-      fusionDiscarded:   "discarded fusion output tsv",
-      spliceJunctions: "splice junctions from star fusion run",
+      fusionPredictions: "Fusion output tsv",
+      fusionDiscarded:   "Discarded fusion output tsv",
+      spliceJunctions: "Splice junctions from star fusion run",
       sortAlignBam: "Output sorted bam file aligned to genome",
       sortAlignIndex: "Output index file for sorted bam aligned to genome",
-      fusionFigure: "pdf rendering of candidate fusions"
+      fusionFigure: "PDF rendering of candidate fusions"
     }
- }
+  }
 }
 
-struct InputGroup {
-  File fastqR1
-  File fastqR2
-  String readGroup
-}
+
 
