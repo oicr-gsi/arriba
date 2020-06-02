@@ -1,0 +1,8 @@
+{
+  "arriba.inputGroups": [{
+    "fastqR1": "/.mounts/labs/gsi/testdata/arriba/input_data/SWID_15241710_TGL24_0114_Bn_U_PE_329_WT_EPT2007_191025_NB551056_0121_AH7LW2BGXC_CGGCTATG_L001_R1_001.fastq.gz",
+    "fastqR2": "/.mounts/labs/gsi/testdata/arriba/input_data/SWID_15241710_TGL24_0114_Bn_U_PE_329_WT_EPT2007_191025_NB551056_0121_AH7LW2BGXC_CGGCTATG_L001_R2_001.fastq.gz",
+    "readGroup": "ID:191025_NB551056_0121_AH7LW2BGXC_CGGCTATG_L001 PL:Illumina PU:191025_NB551056_0121_AH7LW2BGXC_CGGCTATG_L001 LB:TGL24_0114_Bn_U_PE_329_WT SM:EPT2007 CM:OICR"
+  }],
+  "arriba.outputFileNamePrefix": "EPT2007"
+}

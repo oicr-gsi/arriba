@@ -1,0 +1,47 @@
+{
+  "defaults": {
+    "description": "ARRIBA workflow test",
+    "metrics_calculate": "calculate.sh",
+    "metrics_compare": "compare.sh",
+    "output_metrics_dir": "/.mounts/labs/gsi/testdata/arriba/output_metrics/1.0",
+    "parameters": {
+      "wdl_options": {
+        "write_to_cache": false,
+        "read_from_cache": false
+      }
+    }
+  },
+  "tests": [{
+      "id": "k562_RNAseqTest",
+      "parameters": {
+        "wdl_inputs": {
+          "arriba.inputGroups": [{
+            "fastqR1": "/.mounts/labs/gsi/testdata/arriba/input_data/k562_NoIndex_L001_R1_001.fastq.gz",
+            "fastqR2": "/.mounts/labs/gsi/testdata/arriba/input_data/k562_NoIndex_L001_R2_001.fastq.gz",
+            "readGroup": "ID:121005_h804_0096_AD0V4NACXX_5_NoIndex PL:Illumina PU:121005_h804_0096_AD0V4NACXX_5_NoIndex LB:K562_2 SM:K562_2test CM:OICR"
+          }],
+          "arriba.outputFileNamePrefix": "K562"
+        }
+      }
+    },
+    {
+      "id": "EPT105_RNAseqTest",
+      "parameters": {
+        "wdl_inputs": {
+          "arriba.inputGroups": [{
+              "fastqR1": "/.mounts/labs/gsi/testdata/arriba/input_data/EPT105_A_R1_001.fastq.gz",
+              "fastqR2": "/.mounts/labs/gsi/testdata/arriba/input_data/EPT105_A_R2_001.fastq.gz",
+              "readGroup": "ID:191025_NB551056_0121_AH7LW2BGXC LB:TGL24_0115_Bn_U_PE_325_WT SM:EPT105 CM:OICR"
+            },
+            {
+              "fastqR1": "/.mounts/labs/gsi/testdata/arriba/input_data/EPT105_B_R1_001.fastq.gz",
+              "fastqR2": "/.mounts/labs/gsi/testdata/arriba/input_data/EPT105_B_R2_001.fastq.gz",
+              "readGroup": "ID:191126_NB551056_0130_AHTMW5BGXC LB:TGL24_0115_Bn_U_PE_325_WT SM:EPT105 CM:OICR"
+            }
+          ],
+          "arriba.outputFileNamePrefix": "EPT105"
+        }
+      }
+    }
+  ]
+}
