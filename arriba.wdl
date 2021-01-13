@@ -80,16 +80,14 @@ task runArriba {
       set -euo pipefail
 
       arriba \
-      -x ~{outputFileNamePrefix}.Aligned.sortedByCoord.out.bam \
+      -x ~{inputBam} \
       -o ~{outputFileNamePrefix}.fusions.tsv -O ~{outputFileNamePrefix}.fusions.discarded.tsv \
       ~{"-d " + structuralVariants} -k ~{cosmic} \
       -a ~{genome} -g ~{gencode} -b ~{blacklist} \
       -T -P
 
-      samtools index ~{outputFileNamePrefix}.Aligned.sortedByCoord.out.bam
-
       Rscript ~{draw} --annotation=~{gencode} --fusions=~{outputFileNamePrefix}.fusions.tsv \
-      --output=~{outputFileNamePrefix}.fusions.pdf --alignments=~{outputFileNamePrefix}.Aligned.sortedByCoord.out.bam \
+      --output=~{outputFileNamePrefix}.fusions.pdf --alignments=~{inputBam} \
       --cytobands=~{cytobands} --proteinDomains=~{domains}
   >>>
 
