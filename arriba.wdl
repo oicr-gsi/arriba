@@ -34,6 +34,10 @@ workflow arriba {
      {
        name: "arriba/2.0",
        url: "https://github.com/suhrig/arriba"
+     },
+     {
+       name: "rstats/3.6",
+       url: "https://www.r-project.org/"
      }
     ]
   }
