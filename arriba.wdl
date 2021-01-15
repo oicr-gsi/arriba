@@ -47,9 +47,10 @@ task runArriba {
     String modules = "arriba/2.0 rarriba/0.1 hg38-cosmic-fusion/v91"
     String gencode = "$GENCODE_ROOT/gencode.v31.annotation.gtf"
     String genome = "$HG38_ROOT/hg38_random.fa"
-    String cytobands = "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_2018-02-23.tsv"
-    String domains = "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_2019-07-05.gff3"
-    String blacklist = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_2018-11-04.tsv.gz"
+    String knownfusions = "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.0.0.tsv.gz"
+    String cytobands = "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.0.0.tsv"
+    String domains = "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.0.0.gff3"
+    String blacklist = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.0.0.tsv.gz"
     String chimOutType = "WithinBAM SoftClip"
     String cosmic = "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv"
     String outputFileNamePrefix
@@ -65,6 +66,7 @@ task runArriba {
     draw: "path to arriba draw command"
     modules: "Names and versions of modules to load"
     gencode: "Path to gencode annotation file"
+    knownfusions: "database of known fusions"
     domains: "protein domains for annotation"
     cytobands: "cytobands for figure annotation"
     cosmic: "known fusions from cosmic"
@@ -82,8 +84,8 @@ task runArriba {
       arriba \
       -x ~{inputBam} \
       -o ~{outputFileNamePrefix}.fusions.tsv -O ~{outputFileNamePrefix}.fusions.discarded.tsv \
-      ~{"-d " + structuralVariants} -k ~{cosmic} \
-      -a ~{genome} -g ~{gencode} -b ~{blacklist} \
+      ~{"-d " + structuralVariants} -k ~{cosmic} -t {knownfusions} \
+      -a ~{genome} -g ~{gencode} -b ~{blacklist} -p {domains} \
       -T -P
 
       Rscript ~{draw} --annotation=~{gencode} --fusions=~{outputFileNamePrefix}.fusions.tsv \
