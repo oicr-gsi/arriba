@@ -4,12 +4,14 @@ workflow arriba {
 
   input {
     File inputBam
+    File bamIndex
     String outputFileNamePrefix
     File? structuralVariants
   }
 
   parameter_meta {
-    inputBam: "STAR Bam aligned to genome"
+    inputBam: "STAR BAM aligned to genome"
+    bamIndex: "Index for BAM file"
     outputFileNamePrefix: "Prefix for filename"
     structuralVariants: "path to structural variants for sample"
   }
@@ -17,6 +19,7 @@ workflow arriba {
   call runArriba {
     input:
     inputBam = inputBam,
+    bamIndex = bamIndex,
     outputFileNamePrefix = outputFileNamePrefix,
     structuralVariants = structuralVariants }
 
@@ -59,7 +62,6 @@ task runArriba {
     String cytobands = "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.0.0.tsv"
     String domains = "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.0.0.gff3"
     String blacklist = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.0.0.tsv.gz"
-    String chimOutType = "WithinBAM SoftClip"
     String cosmic = "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv"
     String outputFileNamePrefix
     Int threads = 8
