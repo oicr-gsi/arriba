@@ -38,6 +38,10 @@ workflow arriba {
      {
        name: "rstats/3.6",
        url: "https://www.r-project.org/"
+     },
+     {
+       name: "star/2.7.6a",
+       url: "https://github.com/alexdobin/STAR"
      }
     ]
   }
@@ -88,8 +92,8 @@ task runArriba {
       arriba \
       -x ~{inputBam} \
       -o ~{outputFileNamePrefix}.fusions.tsv -O ~{outputFileNamePrefix}.fusions.discarded.tsv \
-      ~{"-d " + structuralVariants} -k ~{cosmic} -t {knownfusions} \
-      -a ~{genome} -g ~{gencode} -b ~{blacklist} -p {domains} \
+      ~{"-d " + structuralVariants} -k ~{cosmic} -t ~{knownfusions} \
+      -a ~{genome} -g ~{gencode} -b ~{blacklist} -p ~{domains} \
       -T -P
 
       Rscript ~{draw} --annotation=~{gencode} --fusions=~{outputFileNamePrefix}.fusions.tsv \
