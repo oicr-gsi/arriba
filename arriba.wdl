@@ -93,8 +93,7 @@ task runArriba {
       -x ~{inputBam} \
       -o ~{outputFileNamePrefix}.fusions.tsv -O ~{outputFileNamePrefix}.fusions.discarded.tsv \
       ~{"-d " + structuralVariants} -k ~{cosmic} -t ~{knownfusions} \
-      -a ~{genome} -g ~{gencode} -b ~{blacklist} -p ~{domains} \
-      -T -P
+      -a ~{genome} -g ~{gencode} -b ~{blacklist} -p ~{domains}
 
       Rscript ~{draw} --annotation=~{gencode} --fusions=~{outputFileNamePrefix}.fusions.tsv \
       --output=~{outputFileNamePrefix}.fusions.pdf --alignments=~{inputBam} \
