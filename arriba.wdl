@@ -48,7 +48,7 @@ task runArriba {
     File   inputBam
     File?  structuralVariants
     String draw = "$ARRIBA_ROOT/bin/draw_fusions.R"
-    String modules = "arriba/2.0 rarriba/0.1 hg38-cosmic-fusion/v91"
+    String modules = "arriba/2.0 rarriba/0.1 hg38-cosmic-fusion/v91 hg38-star-index100/2.7.6a"
     String gencode = "$GENCODE_ROOT/gencode.v31.annotation.gtf"
     String genome = "$HG38_ROOT/hg38_random.fa"
     String knownfusions = "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.0.0.tsv.gz"
