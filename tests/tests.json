@@ -11,16 +11,14 @@
       }
     }
   },
-  "tests": [,
-    {
-      "id": "EPT105_RNAseqTest",
-      "parameters": {
-        "wdl_inputs": {
-          "arriba.outputFileNamePrefix": "EPT105",
-          "arriba.inputBam": "/.mounts/labs/gsi/testdata/arriba/2.0/input_data/EPT105.Aligned.sortedByCoord.out.bam",
-          "arriba.indexBam": "/.mounts/labs/gsi/testdata/arriba/2.0/input_data/EPT105.Aligned.sortedByCoord.out.bai"
-        }
+  "tests": {
+    "id": "EPT105_RNAseqTest",
+    "parameters": {
+      "wdl_inputs": {
+        "arriba.outputFileNamePrefix": "EPT105",
+        "arriba.inputBam": "/.mounts/labs/gsi/testdata/arriba/2.0/input_data/EPT105.Aligned.sortedByCoord.out.bam",
+        "arriba.indexBam": "/.mounts/labs/gsi/testdata/arriba/2.0/input_data/EPT105.Aligned.sortedByCoord.out.bai"
       }
     }
-  ]
+  }
 }
