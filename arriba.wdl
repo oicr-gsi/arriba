@@ -4,14 +4,12 @@ workflow arriba {
 
   input {
     File inputBam
-    File bamIndex
     String outputFileNamePrefix
     File? structuralVariants
   }
 
   parameter_meta {
     inputBam: "STAR BAM aligned to genome"
-    bamIndex: "Index for BAM file"
     outputFileNamePrefix: "Prefix for filename"
     structuralVariants: "path to structural variants for sample"
   }
@@ -19,7 +17,6 @@ workflow arriba {
   call runArriba {
     input:
     inputBam = inputBam,
-    bamIndex = bamIndex,
     outputFileNamePrefix = outputFileNamePrefix,
     structuralVariants = structuralVariants }
 
