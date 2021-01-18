@@ -4,12 +4,14 @@ workflow arriba {
 
   input {
     File inputBam
+    File indexBam
     String outputFileNamePrefix
     File? structuralVariants
   }
 
   parameter_meta {
     inputBam: "STAR BAM aligned to genome"
+    indexBam: "Index for STAR Bam file"
     outputFileNamePrefix: "Prefix for filename"
     structuralVariants: "path to structural variants for sample"
   }
@@ -17,6 +19,7 @@ workflow arriba {
   call runArriba {
     input:
     inputBam = inputBam,
+    indexBam = indexBam,
     outputFileNamePrefix = outputFileNamePrefix,
     structuralVariants = structuralVariants }
 
@@ -50,6 +53,7 @@ workflow arriba {
 task runArriba {
   input {
     File   inputBam
+    File   indexBam
     File?  structuralVariants
     String draw = "$ARRIBA_ROOT/bin/draw_fusions.R"
     String modules = "arriba/2.0 rarriba/0.1 hg38-cosmic-fusion/v91 hg38-star-index100/2.7.6a"
@@ -68,6 +72,7 @@ task runArriba {
 
   parameter_meta {
     inputBam: "STAR bam"
+    indexBam: "STAR bam index"
     structuralVariants: "file containing structural variant calls"
     outputFileNamePrefix: "Prefix for filename"
     draw: "path to arriba draw command"
