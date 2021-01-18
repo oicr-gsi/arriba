@@ -84,7 +84,6 @@ task runArriba {
     cosmic: "known fusions from cosmic"
     blacklist: "List of fusions which are seen in normal tissue or artefacts"
     genome: "Path to loaded genome"
-    chimOutType: "Where to report chimeric reads"
     threads: "Requested CPU threads"
     jobMemory: "Memory allocated for this job"
     timeout: "Hours before task timeout"
