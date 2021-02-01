@@ -32,7 +32,7 @@ workflow arriba {
   meta {
     author: "Alexander Fortuna"
     email: "alexander.fortuna@oicr.on.ca"
-    description: "Workflow that takes the Bam output from STAR and detects RNA-seq fusion events."
+    description: "Workflow that takes the Bam output from STAR and detects RNA-seq fusion events. It is required to run STAR with the option --chimOutType WithinBAM as per https://github.com/oicr-gsi/star"
     dependencies: [
      {
        name: "arriba/2.0",
