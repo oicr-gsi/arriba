@@ -48,6 +48,7 @@ workflow arriba {
      }
     ]
   }
+}
 
 task runArriba {
   input {
