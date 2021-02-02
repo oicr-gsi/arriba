@@ -33,7 +33,8 @@ workflow arriba {
     author: "Alexander Fortuna"
     email: "alexander.fortuna@oicr.on.ca"
     description: "Workflow that takes the Bam output from STAR and detects RNA-seq fusion events. It is required to run STAR with the option --chimOutType 'WithinBAM HardClip Junctions' as per https://github.com/oicr-gsi/star to create a BAM file compatible with both the arriba and STARFusion workflows. For additional parameter suggestions please see the arriba github link below."
-     {
+    dependencies: [
+    {
        name: "arriba/2.0",
        url: "https://github.com/suhrig/arriba"
      },
@@ -47,7 +48,6 @@ workflow arriba {
      }
     ]
   }
-}
 
 task runArriba {
   input {
