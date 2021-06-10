@@ -1,3 +1,5 @@
+## 2.0.2 - 2020-06-10
+- Made cosmic parameter optional, it's not available for all organisms
 ## 2.0.1 - 2020-05-31
 - Migrate to Vidarr
 ## 2.0 - 2021-02-01
