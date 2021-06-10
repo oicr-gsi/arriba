@@ -63,7 +63,7 @@ task runArriba {
     String cytobands = "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.0.0.tsv"
     String domains = "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.0.0.gff3"
     String blacklist = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.0.0.tsv.gz"
-    String cosmic = "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv"
+    String? cosmic
     String outputFileNamePrefix
     Int threads = 8
     Int jobMemory = 64
@@ -81,7 +81,7 @@ task runArriba {
     knownfusions: "database of known fusions"
     domains: "protein domains for annotation"
     cytobands: "cytobands for figure annotation"
-    cosmic: "known fusions from cosmic"
+    cosmic: "known fusions from cosmic, optional"
     blacklist: "List of fusions which are seen in normal tissue or artefacts"
     genome: "Path to loaded genome"
     threads: "Requested CPU threads"
@@ -95,7 +95,7 @@ task runArriba {
       arriba \
       -x ~{inputBam} \
       -o ~{outputFileNamePrefix}.fusions.tsv -O ~{outputFileNamePrefix}.fusions.discarded.tsv \
-      ~{"-d " + structuralVariants} -k ~{cosmic} -t ~{knownfusions} \
+      ~{"-d " + structuralVariants} ~{"-k " + cosmic} -t ~{knownfusions} \
       -a ~{genome} -g ~{gencode} -b ~{blacklist} -p ~{domains}
 
       Rscript ~{draw} --annotation=~{gencode} --fusions=~{outputFileNamePrefix}.fusions.tsv \

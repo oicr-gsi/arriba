@@ -27,7 +27,7 @@
             },
             "arriba.outputFileNamePrefix": "EPT105",
             "arriba.runArriba.blacklist": null,
-            "arriba.runArriba.cosmic": null,
+            "arriba.runArriba.cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
             "arriba.runArriba.cytobands": null,
             "arriba.runArriba.domains": null,
             "arriba.runArriba.draw": null,

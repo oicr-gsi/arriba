@@ -33,7 +33,7 @@ Parameter|Value|Description
 Parameter|Value|Default|Description
 ---|---|---|---
 `structuralVariants`|File?|None|path to structural variants for sample
-
+`runArriba.cosmic`|String?|None|known fusions from cosmic
 
 #### Optional task parameters:
 Parameter|Value|Default|Description
@@ -46,7 +46,6 @@ Parameter|Value|Default|Description
 `runArriba.cytobands`|String|"$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.0.0.tsv"|cytobands for figure annotation
 `runArriba.domains`|String|"$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.0.0.gff3"|protein domains for annotation
 `runArriba.blacklist`|String|"$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.0.0.tsv.gz"|List of fusions which are seen in normal tissue or artefacts
-`runArriba.cosmic`|String|"$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv"|known fusions from cosmic
 `runArriba.threads`|Int|8|Requested CPU threads
 `runArriba.jobMemory`|Int|64|Memory allocated for this job
 `runArriba.timeout`|Int|72|Hours before task timeout
@@ -60,30 +59,6 @@ Output | Type | Description
 `fusionDiscarded`|File|Discarded fusion output tsv
 `fusionFigure`|File|PDF rendering of candidate fusions
 
-
-## Niassa + Cromwell
-
-This WDL workflow is wrapped in a Niassa workflow (https://github.com/oicr-gsi/pipedev/tree/master/pipedev-niassa-cromwell-workflow) so that it can used with the Niassa metadata tracking system (https://github.com/oicr-gsi/niassa).
-
-* Building
-```
-mvn clean install
-```
-
-* Testing
-```
-mvn clean verify \
--Djava_opts="-Xmx1g -XX:+UseG1GC -XX:+UseStringDeduplication" \
--DrunTestThreads=2 \
--DskipITs=false \
--DskipRunITs=false \
--DworkingDirectory=/path/to/tmp/ \
--DschedulingHost=niassa_oozie_host \
--DwebserviceUrl=http://niassa-url:8080 \
--DwebserviceUser=niassa_user \
--DwebservicePassword=niassa_user_password \
--Dcromwell-host=http://cromwell-url:8000
-```
 
 ## Support
 
