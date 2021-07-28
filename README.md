@@ -61,29 +61,26 @@ Output | Type | Description
 
 
 ## Commands
-
-This section lists command(s) run by arriba workflow
-
-* Running arriba
-
-Run the program on bam output from STAR and detects RNA-seq fusion events
-
-```
-      set -euo pipefail
-
-      arriba \
-      -x INPUT_BAMS \
-      -o OUTPUT_PREFIX.fusions.tsv -O OUTPUT_PREFIX.fusions.discarded.tsv \
-      -d STRUCTURAL_VARIANTS (Optional) -k COSMIC (Optional) -t KNOWN_FUSIONS \
-      -a GENOME -g GENCODE_REFERENCE_FILE -b BLACK_LIST -p DOMAINS
-
-      Rscript DRAW --annotation=GENCODE_REFERENCE_FILE --fusions=OUTPUT_PREFIX.fusions.tsv \
-      --output=OUTPUT_PREFIX.fusions.pdf --alignments=INPUT_BAM \
-      --cytobands=CYTOBANDS --proteinDomains=DOMAINS
-
-```
-
-## Support
+ This section lists command(s) run by arriba workflow
+ 
+ * Running arriba
+ 
+ Run the program on bam output from STAR and detects RNA-seq fusion events
+ 
+ ```
+ 
+       arriba 
+       -x INPUT_BAMS 
+       -o OUTPUT_PREFIX.fusions.tsv -O OUTPUT_PREFIX.fusions.discarded.tsv 
+       -d STRUCTURAL_VARIANTS (Optional) -k COSMIC (Optional) -t KNOWN_FUSIONS 
+       -a GENOME -g GENCODE_REFERENCE_FILE -b BLACK_LIST -p DOMAINS
+ 
+       Rscript DRAW --annotation=GENCODE_REFERENCE_FILE --fusions=OUTPUT_PREFIX.fusions.tsv 
+       --output=OUTPUT_PREFIX.fusions.pdf --alignments=INPUT_BAM 
+       --cytobands=CYTOBANDS --proteinDomains=DOMAINS
+ 
+ ```
+ ## Support
 
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
 
