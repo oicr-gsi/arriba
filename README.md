@@ -1,7 +1,6 @@
 # arriba
 
-Workflow that takes the Bam output from STAR and detects RNA-seq fusion events.
-It is required to run STAR with the option --chimOutType 'WithinBAM HardClip Junctions' as per https://github.com/oicr-gsi/star to create a BAM file compatible with both the arriba and STARFusion workflows. For additional parameter suggestions please see the arriba github link below.
+Workflow that takes the Bam output from STAR and detects RNA-seq fusion events. It is required to run STAR with the option --chimOutType 'WithinBAM HardClip Junctions' as per https://github.com/oicr-gsi/star to create a BAM file compatible with both the arriba and STARFusion workflows. For additional parameter suggestions please see the arriba github link below.
 
 ## Overview
 
@@ -33,7 +32,7 @@ Parameter|Value|Description
 Parameter|Value|Default|Description
 ---|---|---|---
 `structuralVariants`|File?|None|path to structural variants for sample
-`runArriba.cosmic`|String?|None|known fusions from cosmic
+
 
 #### Optional task parameters:
 Parameter|Value|Default|Description
@@ -46,6 +45,7 @@ Parameter|Value|Default|Description
 `runArriba.cytobands`|String|"$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.0.0.tsv"|cytobands for figure annotation
 `runArriba.domains`|String|"$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.0.0.gff3"|protein domains for annotation
 `runArriba.blacklist`|String|"$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.0.0.tsv.gz"|List of fusions which are seen in normal tissue or artefacts
+`runArriba.cosmic`|String?|None|known fusions from cosmic, optional
 `runArriba.threads`|Int|8|Requested CPU threads
 `runArriba.jobMemory`|Int|64|Memory allocated for this job
 `runArriba.timeout`|Int|72|Hours before task timeout
@@ -60,7 +60,27 @@ Output | Type | Description
 `fusionFigure`|File|PDF rendering of candidate fusions
 
 
-## Support
+## Commands
+ This section lists command(s) run by arriba workflow
+ 
+ * Running arriba
+ 
+ Run the program on bam output from STAR and detects RNA-seq fusion events
+ 
+ ```
+ 
+       arriba 
+       -x INPUT_BAMS 
+       -o OUTPUT_PREFIX.fusions.tsv -O OUTPUT_PREFIX.fusions.discarded.tsv 
+       -d STRUCTURAL_VARIANTS (Optional) -k COSMIC (Optional) -t KNOWN_FUSIONS 
+       -a GENOME -g GENCODE_REFERENCE_FILE -b BLACK_LIST -p DOMAINS
+ 
+       Rscript DRAW --annotation=GENCODE_REFERENCE_FILE --fusions=OUTPUT_PREFIX.fusions.tsv 
+       --output=OUTPUT_PREFIX.fusions.pdf --alignments=INPUT_BAM 
+       --cytobands=CYTOBANDS --proteinDomains=DOMAINS
+ 
+ ```
+ ## Support
 
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
 
