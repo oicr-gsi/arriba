@@ -5,6 +5,6 @@ set -o pipefail
 
 cd $1
 
-find . -regex '.*\.fusions.tsv$' -exec wc -l {} \;
-find . -regex '.*\.fusions.discarded.tsv$' -exec wc -l {} \;
-ls | sed 's/.*\.//' | sort | uniq -c
+find . -regex '.*\.fusions.tsv$' -exec md5sum {} \;
+find . -regex '.*\.fusions.discarded.tsv$' -exec md5sum {} \;
+find . -regex '.*\.fusions.pdf$' -exec sh -c "cat {} | grep -av Date | md5sum" \;
