@@ -41,7 +41,10 @@
             "arriba.structuralVariants": null
         },
         "description": "ARRIBA workflow test",
-        "engineArguments": {},
+        "engineArguments": {
+          "write_to_cache": false,
+          "read_from_cache": false
+        },
         "id": "EPT105_RNAseqTest",
         "metadata": {
             "arriba.fusionDiscarded": {
