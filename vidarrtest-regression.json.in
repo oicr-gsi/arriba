@@ -42,7 +42,7 @@
             "arriba.runArriba.modules": null,
             "arriba.runArriba.threads": null,
             "arriba.runArriba.timeout": null,
-            "arriba.runArriba.structuralVariants": null
+            "arriba.structuralVariants": null
         },
         "description": "ARRIBA workflow test",
         "engineArguments": {
