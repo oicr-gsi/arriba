@@ -1,7 +1,7 @@
 [
     {
         "arguments": {
-            "arriba.inputGroup": [
+            "arriba.inputGroups": [
              {
                 "fastqR1": {
                   "contents": {
