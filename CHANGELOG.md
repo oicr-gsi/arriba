@@ -1,3 +1,5 @@
+## 1.0.1 - 2022-07-26
+- migrate arriba 1.0 to Visdarr
 ## Unreleased - 2021-11-17
 https://jira.oicr.on.ca/browse/GP-2871 Making Regression Tests more robusts by adding md5sum checks to replace line counts
 ## 2.0.2 - 2020-06-10
