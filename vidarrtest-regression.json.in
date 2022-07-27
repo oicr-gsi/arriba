@@ -5,7 +5,7 @@
              {
                 "fastqR1": {
                   "contents": {
-                      "configuration": "/.mounts/labs/gsi/testdata/arriba/1.0/input_data/k562_NoIndex_L001_R2_001.fastq.gz",
+                      "configuration": "/.mounts/labs/gsi/testdata/arriba/1.0/input_data/k562_NoIndex_L001_R1_001.fastq.gz",
                       "externalIds": [
                         {
                             "id": "TEST",
@@ -17,7 +17,7 @@
                 },
                 "fastqR2": {
                   "contents": {
-                      "configuration": "/.mounts/labs/gsi/testdata/arriba/2.0/input_data/EPT105.Aligned.sortedByCoord.out.bam",
+                      "configuration": "/.mounts/labs/gsi/testdata/arriba/1.0/input_data/k562_NoIndex_L001_R2_001.fastq.gz",
                       "externalIds": [
                         {
                             "id": "TEST",
