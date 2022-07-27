@@ -30,7 +30,7 @@
               "readGroup": "ID:121005_h804_0096_AD0V4NACXX_5_NoIndex PL:Illumina PU:121005_h804_0096_AD0V4NACXX_5_NoIndex LB:K562_2 SM:K562_2test CM:OICR"  
              }
             ],
-            "arriba.outputFileNamePrefix": "EPT105",
+            "arriba.outputFileNamePrefix": "k562",
             "arriba.runArriba.blacklist": null,
             "arriba.runArriba.cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
             "arriba.runArriba.cytobands": null,
@@ -60,12 +60,12 @@
           "write_to_cache": false,
           "read_from_cache": false
         },
-        "id": "EPT105_RNAseqTest",
+        "id": "k562_RNAseqTest",
         "metadata": {
             "arriba.fusionsPredictions": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT105_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_k562_RNAseqTest_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -73,7 +73,7 @@
             "arriba.fusionDiscarded": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT105_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_k562_RNAseqTest_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -81,7 +81,7 @@
             "arriba.spliceJunctions": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT105_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_k562_RNAseqTest_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -89,7 +89,7 @@
              "arriba.sortAlignBam": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT105_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_k562_RNAseqTest_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -97,7 +97,7 @@
             "arriba.sortAlignIndex": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT105_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_k562_RNAseqTest_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -105,7 +105,7 @@
              "arriba.fusionFigure": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT105_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_k562_RNAseqTest_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -115,7 +115,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/arriba/1.0/output_metrics/EPT105_RNAseqTest.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/arriba/1.0/output_metrics/k562_RNAseqTest.metrics",
                 "type": "script"
             }
         ]
