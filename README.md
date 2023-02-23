@@ -6,9 +6,9 @@ Workflow that takes the Bam output from STAR and detects RNA-seq fusion events. 
 
 ## Dependencies
 
-* [arriba 2.0](https://github.com/suhrig/arriba)
+* [arriba 2.3.0](https://github.com/suhrig/arriba)
 * [rstats 3.6](https://www.r-project.org/)
-* [star 2.7.6a](https://github.com/alexdobin/STAR)
+* [star 2.7.10b](https://github.com/alexdobin/STAR)
 
 
 ## Usage
@@ -38,13 +38,13 @@ Parameter|Value|Default|Description
 Parameter|Value|Default|Description
 ---|---|---|---
 `runArriba.draw`|String|"$ARRIBA_ROOT/bin/draw_fusions.R"|path to arriba draw command
-`runArriba.modules`|String|"arriba/2.0 rarriba/0.1 hg38-cosmic-fusion/v91 hg38-star-index100/2.7.6a"|Names and versions of modules to load
+`runArriba.modules`|String|"arriba/2.3.0 rarriba/0.1 hg38-cosmic-fusion/v91 hg38-star-index100/2.7.10b samtools/1.16.1"|Names and versions of modules to load
 `runArriba.gencode`|String|"$GENCODE_ROOT/gencode.v31.annotation.gtf"|Path to gencode annotation file
 `runArriba.genome`|String|"$HG38_ROOT/hg38_random.fa"|Path to loaded genome
-`runArriba.knownfusions`|String|"$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.0.0.tsv.gz"|database of known fusions
-`runArriba.cytobands`|String|"$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.0.0.tsv"|cytobands for figure annotation
-`runArriba.domains`|String|"$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.0.0.gff3"|protein domains for annotation
-`runArriba.blacklist`|String|"$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.0.0.tsv.gz"|List of fusions which are seen in normal tissue or artefacts
+`runArriba.knownfusions`|String|"$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.3.0.tsv.gz"|database of known fusions
+`runArriba.cytobands`|String|"$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.3.0.tsv"|cytobands for figure annotation
+`runArriba.domains`|String|"$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.3.0.gff3"|protein domains for annotation
+`runArriba.blacklist`|String|"$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.3.0.tsv.gz"|List of fusions which are seen in normal tissue or artefacts
 `runArriba.cosmic`|String?|None|known fusions from cosmic, optional
 `runArriba.threads`|Int|8|Requested CPU threads
 `runArriba.jobMemory`|Int|64|Memory allocated for this job
