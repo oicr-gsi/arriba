@@ -35,16 +35,12 @@ workflow arriba {
     description: "Workflow that takes the Bam output from STAR and detects RNA-seq fusion events. It is required to run STAR with the option --chimOutType 'WithinBAM HardClip Junctions' as per https://github.com/oicr-gsi/star to create a BAM file compatible with both the arriba and STARFusion workflows. For additional parameter suggestions please see the arriba github link below."
     dependencies: [
     {
-       name: "arriba/2.0",
+       name: "arriba/2.4.0",
        url: "https://github.com/suhrig/arriba"
      },
      {
        name: "rstats/3.6",
        url: "https://www.r-project.org/"
-     },
-     {
-       name: "star/2.7.6a",
-       url: "https://github.com/alexdobin/STAR"
      }
     ]
   }
@@ -56,13 +52,13 @@ task runArriba {
     File   indexBam
     File?  structuralVariants
     String draw = "$ARRIBA_ROOT/bin/draw_fusions.R"
-    String modules = "arriba/2.0 rarriba/0.1 hg38-cosmic-fusion/v91 hg38-star-index100/2.7.6a"
+    String modules = "arriba/2.4.0 rarriba/0.1 hg38/p12 hg38-cosmic-fusion/v91 samtools/1.16.1 gencode/31"
     String gencode = "$GENCODE_ROOT/gencode.v31.annotation.gtf"
     String genome = "$HG38_ROOT/hg38_random.fa"
-    String knownfusions = "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.0.0.tsv.gz"
-    String cytobands = "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.0.0.tsv"
-    String domains = "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.0.0.gff3"
-    String blacklist = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.0.0.tsv.gz"
+    String knownfusions = "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz"
+    String cytobands = "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv"
+    String domains = "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3"
+    String blacklist = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz"
     String? cosmic
     String outputFileNamePrefix
     Int threads = 8
@@ -97,6 +93,8 @@ task runArriba {
       -o ~{outputFileNamePrefix}.fusions.tsv -O ~{outputFileNamePrefix}.fusions.discarded.tsv \
       ~{"-d " + structuralVariants} ~{"-k " + cosmic} -t ~{knownfusions} \
       -a ~{genome} -g ~{gencode} -b ~{blacklist} -p ~{domains}
+
+      samtools index -@4 ~{inputBam}
 
       Rscript ~{draw} --annotation=~{gencode} --fusions=~{outputFileNamePrefix}.fusions.tsv \
       --output=~{outputFileNamePrefix}.fusions.pdf --alignments=~{inputBam} \

@@ -3,7 +3,7 @@
         "arguments": {
             "arriba.indexBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/arriba/2.0/input_data/EPT105.Aligned.sortedByCoord.out.bai",
+                    "configuration": "/.mounts/labs/gsi/testdata/arriba/2.1/input_data/EPT105.Aligned.sortedByCoord.out.bai",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -15,7 +15,7 @@
             },
             "arriba.inputBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/arriba/2.0/input_data/EPT105.Aligned.sortedByCoord.out.bam",
+                    "configuration": "/.mounts/labs/gsi/testdata/arriba/2.1/input_data/EPT105.Aligned.sortedByCoord.out.bam",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -76,7 +76,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/arriba/2.0/output_metrics/EPT105_RNAseqTest.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/arriba/2.1/output_metrics/EPT105_RNAseqTest.metrics",
                 "type": "script"
             }
         ]
