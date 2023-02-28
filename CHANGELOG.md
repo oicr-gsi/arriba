@@ -1,8 +1,7 @@
 ## 2.1 2023-02-23
 - Upgrade to Arriba v2.4
 - Use STAR BAM with Chimeric Reads
-## Unreleased - 2021-11-17
-https://jira.oicr.on.ca/browse/GP-2871 Making Regression Tests more robusts by adding md5sum checks to replace line counts
+- Making Regression Tests more robusts by adding md5sum checks to replace line counts
 ## 2.0.2 - 2020-06-10
 - Made cosmic parameter optional, it's not available for all organisms
 ## 2.0.1 - 2020-05-31
