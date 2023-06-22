@@ -1,18 +1,45 @@
 version 1.0
 
+struct ArribaResources {
+    String blacklist
+    String cosmic
+    String cytobands
+    String domains
+    String gencode
+    String knownFusion
+    String genome
+    String modules
+}
+
 workflow arriba {
 
   input {
     File inputBam
     File indexBam
     String outputFileNamePrefix
+    String reference
     File? structuralVariants
   }
+
+  Map[String,ArribaResources] resources = {
+    "hg38": {
+      "blacklist": "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
+      "cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
+      "cytobands": "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv",
+      "domains": "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3",
+      "gencode": "$GENCODE_ROOT/gencode.v31.annotation.gtf",
+      "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
+      "genome": "$HG38_ROOT/hg38_random.fa",
+      "modules": "arriba/2.4.0 hg38/p12 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/31"
+    }
+  }
+
 
   parameter_meta {
     inputBam: "STAR BAM aligned to genome"
     indexBam: "Index for STAR Bam file"
     outputFileNamePrefix: "Prefix for filename"
+    reference: "Reference id, i.e. hg38 (Currently the only one supported)"
     structuralVariants: "path to structural variants for sample"
   }
 
@@ -20,8 +47,17 @@ workflow arriba {
     input:
     inputBam = inputBam,
     indexBam = indexBam,
+    modules = resources[reference].modules,
+    gencode = resources[reference].gencode,
+    genome = resources[reference].genome,
+    knownfusions = resources[reference].knownFusion,
+    cytobands = resources[reference].cytobands,
+    cosmic = resources[reference].cosmic,
+    domains = resources[reference].domains,
+    blacklist = resources[reference].blacklist,
     outputFileNamePrefix = outputFileNamePrefix,
-    structuralVariants = structuralVariants }
+    structuralVariants = structuralVariants
+  }
 
   output {
     File fusionsPredictions     = runArriba.fusionPredictions
@@ -52,13 +88,13 @@ task runArriba {
     File   indexBam
     File?  structuralVariants
     String draw = "$ARRIBA_ROOT/bin/draw_fusions.R"
-    String modules = "arriba/2.4.0 rarriba/0.1 hg38/p12 hg38-cosmic-fusion/v91 samtools/1.16.1 gencode/31"
-    String gencode = "$GENCODE_ROOT/gencode.v31.annotation.gtf"
-    String genome = "$HG38_ROOT/hg38_random.fa"
-    String knownfusions = "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz"
-    String cytobands = "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv"
-    String domains = "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3"
-    String blacklist = "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz"
+    String modules
+    String gencode 
+    String genome 
+    String knownfusions 
+    String cytobands 
+    String domains 
+    String blacklist 
     String? cosmic
     String outputFileNamePrefix
     Int threads = 8
