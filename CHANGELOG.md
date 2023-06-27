@@ -1,3 +1,5 @@
+## 2.2 2023-06-22
+- Moving assembly-specific configuration code into wdl
 ## 2.1 2023-02-23
 - Upgrade to Arriba v2.4
 - Use STAR BAM with Chimeric Reads

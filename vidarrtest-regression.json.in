@@ -26,8 +26,9 @@
                 "type": "EXTERNAL"
             },
             "arriba.outputFileNamePrefix": "EPT105",
+            "arriba.reference": "hg38",
             "arriba.runArriba.blacklist": null,
-            "arriba.runArriba.cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
+            "arriba.runArriba.cosmic": null,
             "arriba.runArriba.cytobands": null,
             "arriba.runArriba.domains": null,
             "arriba.runArriba.draw": null,
@@ -76,7 +77,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/arriba/2.1/output_metrics/EPT105_RNAseqTest.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/arriba/2.2/output_metrics/EPT105_RNAseqTest.metrics",
                 "type": "script"
             }
         ]
