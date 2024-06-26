@@ -43,11 +43,11 @@ Parameter|Value|Default|Description
 
 ### Outputs
 
-Output | Type | Description
----|---|---
-`fusionsPredictions`|File|Fusion output tsv
-`fusionDiscarded`|File|Discarded fusion output tsv
-`fusionFigure`|File|PDF rendering of candidate fusions
+Output | Type | Description | Labels
+---|---|---|---
+`fusionsPredictions`|File|{'description': 'Fusion output tsv', 'vidarr_label': 'fusionPredictions'}|
+`fusionDiscarded`|File|{'description': 'Discarded fusion output tsv', 'vidarr_label': 'fusionDiscarded'}|
+`fusionFigure`|File|{'description': 'PDF rendering of candidate fusions', 'vidarr_label': 'fusionFigure'}|
 
 
 ## Commands
