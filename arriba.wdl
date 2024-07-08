@@ -152,9 +152,18 @@ task runArriba {
 
   meta {
     output_meta: {
-      fusionPredictions: "Fusion output tsv",
-      fusionDiscarded:   "Discarded fusion output tsv",
-      fusionFigure: "PDF rendering of candidate fusions"
+    fusionPredictions: {
+        description: "Fusion output tsv",
+        vidarr_label: "fusionPredictions"
+    },
+    fusionDiscarded: {
+        description: "Discarded fusion output tsv",
+        vidarr_label: "fusionDiscarded"
+    },
+    fusionFigure: {
+        description: "PDF rendering of candidate fusions",
+        vidarr_label: "fusionFigure"
     }
+}
   }
 }

@@ -4,6 +4,8 @@
 - Upgrade to Arriba v2.4
 - Use STAR BAM with Chimeric Reads
 - Making Regression Tests more robusts by adding md5sum checks to replace line counts
+## 2.1.0 - 2024-06-25
+[GRD-797](https://jira.oicr.on.ca/browse/GRD-797) - add vidarr labels to outputs (changes to medata only)
 ## 2.0.2 - 2020-06-10
 - Made cosmic parameter optional, it's not available for all organisms
 ## 2.0.1 - 2020-05-31
