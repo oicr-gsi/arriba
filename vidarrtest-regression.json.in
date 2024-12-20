@@ -27,6 +27,7 @@
             },
             "arriba.outputFileNamePrefix": "EPT105",
             "arriba.reference": "hg38",
+            "arriba.runArriba.additionalParameters": null,
             "arriba.runArriba.blacklist": null,
             "arriba.runArriba.cosmic": null,
             "arriba.runArriba.cytobands": null,
