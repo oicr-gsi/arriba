@@ -96,6 +96,7 @@ task runArriba {
     String domains 
     String blacklist 
     String? cosmic
+    String? additionalParameters
     String outputFileNamePrefix
     Int threads = 8
     Int jobMemory = 64
@@ -116,6 +117,7 @@ task runArriba {
     cosmic: "known fusions from cosmic, optional"
     blacklist: "List of fusions which are seen in normal tissue or artefacts"
     genome: "Path to loaded genome"
+    additionalParameters: "Any additional parameters we want to pass"
     threads: "Requested CPU threads"
     jobMemory: "Memory allocated for this job"
     timeout: "Hours before task timeout"
@@ -128,7 +130,7 @@ task runArriba {
       -x ~{inputBam} \
       -o ~{outputFileNamePrefix}.fusions.tsv -O ~{outputFileNamePrefix}.fusions.discarded.tsv \
       ~{"-d " + structuralVariants} ~{"-k " + cosmic} -t ~{knownfusions} \
-      -a ~{genome} -g ~{gencode} -b ~{blacklist} -p ~{domains}
+      -a ~{genome} -g ~{gencode} -b ~{blacklist} -p ~{domains} ~{additionalParameters}
 
       samtools index -@4 ~{inputBam}
 

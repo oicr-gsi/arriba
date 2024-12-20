@@ -36,6 +36,7 @@ Parameter|Value|Default|Description
 Parameter|Value|Default|Description
 ---|---|---|---
 `runArriba.draw`|String|"$ARRIBA_ROOT/bin/draw_fusions.R"|path to arriba draw command
+`runArriba.additionalParameters`|String?|None|Any additional parameters we want to pass
 `runArriba.threads`|Int|8|Requested CPU threads
 `runArriba.jobMemory`|Int|64|Memory allocated for this job
 `runArriba.timeout`|Int|72|Hours before task timeout
