@@ -3,7 +3,7 @@
         "arguments": {
             "arriba.indexBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/arriba/2.1/input_data/EPT105.Aligned.sortedByCoord.out.bai",
+                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/EPT_Test.Aligned.sortedByCoord.out.bai",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -15,7 +15,7 @@
             },
             "arriba.inputBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/arriba/2.1/input_data/EPT105.Aligned.sortedByCoord.out.bam",
+                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/EPT_Test.Aligned.sortedByCoord.out.bam",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -25,7 +25,7 @@
                 },
                 "type": "EXTERNAL"
             },
-            "arriba.outputFileNamePrefix": "EPT105",
+            "arriba.outputFileNamePrefix": "EPT_Test",
             "arriba.reference": "hg38",
             "arriba.runArriba.additionalParameters": null,
             "arriba.runArriba.blacklist": null,
@@ -47,12 +47,12 @@
           "write_to_cache": false,
           "read_from_cache": false
         },
-        "id": "EPT105_RNAseqTest",
+        "id": "EPT_RNAseqTest",
         "metadata": {
             "arriba.fusionDiscarded": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT105_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT_RNAseqTest_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -60,7 +60,7 @@
             "arriba.fusionFigure": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT105_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT_RNAseqTest_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -68,7 +68,7 @@
             "arriba.fusionsPredictions": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT105_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_EPT_RNAseqTest_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -78,7 +78,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/arriba/2.2/output_metrics/EPT105_RNAseqTest.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/arriba/2.2/output_metrics/workflow_test_01.metrics",
                 "type": "script"
             }
         ]
