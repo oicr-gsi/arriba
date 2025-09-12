@@ -9,6 +9,7 @@ struct ArribaResources {
     String knownFusion
     String genome
     String modules
+    String data_modules
 }
 
 workflow arriba {
@@ -19,6 +20,8 @@ workflow arriba {
     String outputFileNamePrefix
     String reference
     File? structuralVariants
+    String local_code_modulefile_path = "/home/ubuntu/local_modules/gsi/modulator/modulefiles/Ubuntu24.04"
+    String local_data_modulefile_path = "/home/ubuntu/local_modules/gsi/modulator/modulefiles/data"
   }
 
   Map[String,ArribaResources] resources = {
@@ -30,7 +33,8 @@ workflow arriba {
       "gencode": "$GENCODE_ROOT/gencode.v31.annotation.gtf",
       "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
       "genome": "$HG38_ROOT/hg38_random.fa",
-      "modules": "arriba/2.4.0 hg38/p12 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/31"
+      "modules": "arriba/2.4.0 samtools/1.16.1 rarriba/0.1",
+      "data_modules": "hg38/p12 hg38-cosmic-fusion/v91 gencode/31"
     }
   }
 
@@ -41,6 +45,8 @@ workflow arriba {
     outputFileNamePrefix: "Prefix for filename"
     reference: "Reference id, i.e. hg38 (Currently the only one supported)"
     structuralVariants: "path to structural variants for sample"
+    local_code_modulefile_path: "Path to locally build code modulefiles"
+    local_data_modulefile_path: "Path to locally build data modulefiles"
   }
 
   call runArriba {
@@ -48,6 +54,7 @@ workflow arriba {
     inputBam = inputBam,
     indexBam = indexBam,
     modules = resources[reference].modules,
+    data_modules = resources[reference].data_modules,
     gencode = resources[reference].gencode,
     genome = resources[reference].genome,
     knownfusions = resources[reference].knownFusion,
@@ -56,7 +63,9 @@ workflow arriba {
     domains = resources[reference].domains,
     blacklist = resources[reference].blacklist,
     outputFileNamePrefix = outputFileNamePrefix,
-    structuralVariants = structuralVariants
+    structuralVariants = structuralVariants,
+    local_code_modulefile_path = local_code_modulefile_path, 
+    local_data_modulefile_path = local_data_modulefile_path
   }
 
   output {
@@ -89,6 +98,9 @@ task runArriba {
     File?  structuralVariants
     String draw = "$ARRIBA_ROOT/bin/draw_fusions.R"
     String modules
+    String data_modules
+    String local_code_modulefile_path
+    String local_data_modulefile_path
     String gencode 
     String genome 
     String knownfusions 
@@ -110,6 +122,9 @@ task runArriba {
     outputFileNamePrefix: "Prefix for filename"
     draw: "path to arriba draw command"
     modules: "Names and versions of modules to load"
+    data_modules: "Names and versions of data modules to load"
+    local_code_modulefile_path: "Path to locally build code modulefiles"
+    local_data_modulefile_path: "Path to locally build data modulefiles"
     gencode: "Path to gencode annotation file"
     knownfusions: "database of known fusions"
     domains: "protein domains for annotation"
@@ -125,6 +140,11 @@ task runArriba {
 
   command <<<
       set -euo pipefail
+      . /usr/share/modules/init/bash
+      module use ~{local_code_modulefile_path }
+      module load ~{modules}
+      module use ~{local_data_modulefile_path }
+      module load ~{data_modules}
 
       arriba \
       -x ~{inputBam} \
@@ -141,7 +161,6 @@ task runArriba {
 
   runtime {
     memory:  "~{jobMemory} GB"
-    modules: "~{modules}"
     cpu:     "~{threads}"
     timeout: "~{timeout}"
   }
