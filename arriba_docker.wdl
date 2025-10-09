@@ -22,13 +22,13 @@ workflow arriba {
 
   Map[String,ArribaResources] resources = {
     "hg38": {
-      "blacklist": "/home/ubuntu/module_data/arriba_data/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
-      "cosmic": "/home/ubuntu/module_data/arriba_data/CosmicFusionExport.tsv",
-      "cytobands": "/home/ubuntu/module_data/arriba_data/cytobands_hg38_GRCh38_v2.4.0.tsv",
-      "domains": "/home/ubuntu/module_data/arriba_data/protein_domains_hg38_GRCh38_v2.4.0.gff3",
-      "gencode": "/home/ubuntu/module_data/arriba_data/gencode.v31.annotation.gtf",
-      "knownFusion": "/home/ubuntu/module_data/arriba_data/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
-      "genome": "/home/ubuntu/module_data/hg38_data/hg38_random.fa"
+      "blacklist": "gs://cromwell-wdl/module_data/arriba_data/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
+      "cosmic": "gs://cromwell-wdl/module_data/arriba_data/CosmicFusionExport.tsv",
+      "cytobands": "gs://cromwell-wdl/module_data/arriba_data/cytobands_hg38_GRCh38_v2.4.0.tsv",
+      "domains": "gs://cromwell-wdl/module_data/arriba_data/protein_domains_hg38_GRCh38_v2.4.0.gff3",
+      "gencode": "gs://cromwell-wdl/module_data/arriba_data/gencode.v31.annotation.gtf",
+      "knownFusion": "gs://cromwell-wdl/module_data/arriba_data/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
+      "genome": "gs://cromwell-wdl/module_data/hg38_data/hg38_random.fa"
     }
   }
 
@@ -84,8 +84,8 @@ task runArriba {
     File   inputBam
     File   indexBam
     File?  structuralVariants
-    File draw = "/home/ubuntu/module_data/arriba_data/draw_fusions.R"
-    String docker= "arriba:2.4.0"
+    File draw = "gs://cromwell-wdl/module_data/arriba_data/draw_fusions.R"
+    String docker= "kevin2peng/arriba:2.4.0"
     File gencode 
     File genome 
     File knownfusions 
