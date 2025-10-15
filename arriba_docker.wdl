@@ -26,7 +26,7 @@ workflow arriba {
       "cosmic": "gs://cromwell-wdl/module_data/arriba_data/CosmicFusionExport.tsv",
       "cytobands": "gs://cromwell-wdl/module_data/arriba_data/cytobands_hg38_GRCh38_v2.4.0.tsv",
       "domains": "gs://cromwell-wdl/module_data/arriba_data/protein_domains_hg38_GRCh38_v2.4.0.gff3",
-      "gencode": "gs://cromwell-wdl/module_data/arriba_data/gencode.v31.annotation.gtf",
+      "gencode": "gs://cromwell-wdl/module_data/arriba_data/gencode.v44.annotation.gtf",
       "knownFusion": "gs://cromwell-wdl/module_data/arriba_data/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
       "genome": "gs://cromwell-wdl/module_data/hg38_data/hg38_random.fa"
     }
@@ -95,6 +95,8 @@ task runArriba {
     File? cosmic
     String? additionalParameters
     String outputFileNamePrefix
+    Int threads = 16
+    Int jobMemory = 256
   }
 
   parameter_meta {
@@ -123,14 +125,15 @@ task runArriba {
       ~{"-d " + structuralVariants} ~{"-k " + cosmic} -t ~{knownfusions} \
       -a ~{genome} -g ~{gencode} -b ~{blacklist} -p ~{domains} ~{additionalParameters}
 
-      samtools index -@4 ~{inputBam}
-
       Rscript ~{draw} --annotation=~{gencode} --fusions=~{outputFileNamePrefix}.fusions.tsv \
       --output=~{outputFileNamePrefix}.fusions.pdf --alignments=~{inputBam} \
       --cytobands=~{cytobands} --proteinDomains=~{domains}
   >>>
 runtime {
-    docker:"786fca2f74f7"
+    memory:  "~{jobMemory} GB"
+    cpu:     "~{threads}"
+    docker:"~{docker}"
+    disks: "local-disk 300 SSD"
 }
 
   output {
