@@ -20,8 +20,8 @@ workflow arriba {
     String outputFileNamePrefix
     String reference
     File? structuralVariants
-    String local_code_modulefile_path = "/home/ubuntu/local_modules/gsi/modulator/modulefiles/Ubuntu24.04"
-    String local_data_modulefile_path = "/home/ubuntu/local_modules/gsi/modulator/modulefiles/data"
+    String local_code_modulefile_path  = "/home/gpeng_oicr_on_ca/local_modules/gsi/modulator/modulefiles/Ubuntu24.04"
+    String local_data_modulefile_path  = "/home/gpeng_oicr_on_ca/local_modules/gsi/modulator/modulefiles/data"
   }
 
   Map[String,ArribaResources] resources = {
@@ -140,6 +140,8 @@ task runArriba {
 
   command <<<
       set -euo pipefail
+      export TMPDIR=$(pwd)/tmp
+      mkdir -p $TMPDIR
       . /usr/share/modules/init/bash
       module use ~{local_code_modulefile_path }
       module load ~{modules}
@@ -157,6 +159,8 @@ task runArriba {
       Rscript ~{draw} --annotation=~{gencode} --fusions=~{outputFileNamePrefix}.fusions.tsv \
       --output=~{outputFileNamePrefix}.fusions.pdf --alignments=~{inputBam} \
       --cytobands=~{cytobands} --proteinDomains=~{domains}
+
+      rm -rf $TMPDIR
   >>>
 
   runtime {
