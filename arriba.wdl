@@ -31,6 +31,16 @@ workflow arriba {
       "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
       "genome": "$HG38_ROOT/hg38_random.fa",
       "modules": "arriba/2.4.0 hg38/p12 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/44"
+    },
+    "hg38_noAlt": {
+      "blacklist": "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
+      "cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
+      "cytobands": "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv",
+      "domains": "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3",
+      "gencode": "$GENCODE_ROOT/gencode.v44.annotation.gtf",
+      "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
+      "genome": "$HG38_NOALT_ROOT/hg38_noAlt.fa",
+      "modules": "arriba/2.4.0 hg38-noalt/p12 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/44"
     }
   }
 
