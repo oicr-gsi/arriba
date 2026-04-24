@@ -1,4 +1,89 @@
 [
+     {
+        "arguments": {
+            "arriba.indexBam": {
+                "contents": {
+                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/test_1.Aligned.sortedByCoord.out.bai",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
+            },
+            "arriba.inputBam": {
+                "contents": {
+                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/test_1.Aligned.sortedByCoord.out.bam",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
+            },
+            "arriba.outputFileNamePrefix": "test_1_g31",
+            "arriba.reference": "hg38",
+            "arriba.gencode": "31",
+            "arriba.runArriba.additionalParameters": null,
+            "arriba.runArriba.blacklist": null,
+            "arriba.runArriba.cosmic": null,
+            "arriba.runArriba.cytobands": null,
+            "arriba.runArriba.domains": null,
+            "arriba.runArriba.draw": null,
+            "arriba.runArriba.gencode": null,
+            "arriba.runArriba.genome": null,
+            "arriba.runArriba.jobMemory": null,
+            "arriba.runArriba.knownfusions": null,
+            "arriba.runArriba.modules": null,
+            "arriba.runArriba.threads": null,
+            "arriba.runArriba.timeout": null,
+            "arriba.structuralVariants": null
+        },
+        "description": "ARRIBA workflow test with gencode 31 annotations",
+        "engineArguments": {
+          "write_to_cache": false,
+          "read_from_cache": false
+        },
+        "id": "EPT_RNAseqTest",
+        "metadata": {
+            "arriba.fusionDiscarded": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "arriba.fusionFigure": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "arriba.fusionsPredictions": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            }
+        },
+        "validators": [
+            {
+                "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
+                "metrics_compare": "@CHECKOUT@/tests/compare.sh",
+                "output_metrics": "/.mounts/labs/gsi/testdata/arriba/2.4/output_metrics/workflow_test_01.metrics",
+                "type": "script"
+            }
+        ]
+    },
     {
         "arguments": {
             "arriba.indexBam": {
@@ -25,8 +110,9 @@
                 },
                 "type": "EXTERNAL"
             },
-            "arriba.outputFileNamePrefix": "test_1",
+            "arriba.outputFileNamePrefix": "test_1_g44",
             "arriba.reference": "hg38",
+            "arriba.gencode": "44",
             "arriba.runArriba.additionalParameters": null,
             "arriba.runArriba.blacklist": null,
             "arriba.runArriba.cosmic": null,
@@ -42,7 +128,7 @@
             "arriba.runArriba.timeout": null,
             "arriba.structuralVariants": null
         },
-        "description": "ARRIBA workflow test",
+        "description": "ARRIBA workflow test with gencode 44 annotations",
         "engineArguments": {
           "write_to_cache": false,
           "read_from_cache": false
@@ -111,6 +197,7 @@
             },
             "arriba.outputFileNamePrefix": "test_noAlt",
             "arriba.reference": "hg38_noAlt",
+            "arriba.gencode": "44",
             "arriba.runArriba.additionalParameters": null,
             "arriba.runArriba.blacklist": null,
             "arriba.runArriba.cosmic": null,

@@ -24,6 +24,7 @@ Parameter|Value|Description
 `indexBam`|File|Index for STAR Bam file
 `outputFileNamePrefix`|String|Prefix for filename
 `reference`|String|Reference id, i.e. hg38 (Currently the only one supported)
+`gencode`|String|Version of gencode
 
 
 #### Optional workflow parameters:

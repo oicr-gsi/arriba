@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [GRD-1019](https://jira.oicr.on.ca/browse/GRD-1019)
 - Updated genomes to include hg38_noAlt
 
+## [2.4.2] - 2026-04-34
+### Added
+- gencode parameter
+- resources for both gencode 44 and 31 versions
+### Changed
+- Updated the regression tests
+
+
 ## [2.4.1] - 2025-09-25
 ### Changed
 - [GRD-964](https://jira.oicr.on.ca/browse/GRD-964)
