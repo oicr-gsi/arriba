@@ -48,12 +48,12 @@
           "write_to_cache": false,
           "read_from_cache": false
         },
-        "id": "EPT_RNAseqTest",
+        "id": "EPT_RNAseqTest_g31",
         "metadata": {
             "arriba.fusionDiscarded": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_g31_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -61,7 +61,7 @@
             "arriba.fusionFigure": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_g31_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -69,7 +69,7 @@
             "arriba.fusionsPredictions": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_g31_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -133,12 +133,12 @@
           "write_to_cache": false,
           "read_from_cache": false
         },
-        "id": "EPT_RNAseqTest",
+        "id": "EPT_RNAseqTest_g44",
         "metadata": {
             "arriba.fusionDiscarded": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_g44_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -146,7 +146,7 @@
             "arriba.fusionFigure": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_g44_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -154,7 +154,7 @@
             "arriba.fusionsPredictions": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_g44_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -223,7 +223,7 @@
             "arriba.fusionDiscarded": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_noAlt_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -231,7 +231,7 @@
             "arriba.fusionFigure": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_noAlt_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
@@ -239,7 +239,7 @@
             "arriba.fusionsPredictions": {
                 "contents": [
                     {
-                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_@JENKINSID@"
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_arriba_test_RNAseqTest_noAlt_@JENKINSID@"
                     }
                 ],
                 "type": "ALL"
