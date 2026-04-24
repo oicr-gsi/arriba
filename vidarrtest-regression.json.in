@@ -3,7 +3,7 @@
         "arguments": {
             "arriba.indexBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/EPT_Test.Aligned.sortedByCoord.out.bai",
+                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/test_1.Aligned.sortedByCoord.out.bai",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -15,7 +15,7 @@
             },
             "arriba.inputBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/EPT_Test.Aligned.sortedByCoord.out.bam",
+                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/test_1.Aligned.sortedByCoord.out.bam",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -48,7 +48,7 @@
           "write_to_cache": false,
           "read_from_cache": false
         },
-        "id": "EPT_RNAseqTest_g31",
+        "id": "RNAseqTest_g31",
         "metadata": {
             "arriba.fusionDiscarded": {
                 "contents": [
@@ -79,7 +79,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/arriba/2.4/output_metrics/workflow_test_01.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/arriba/2.4/output_metrics/workflow_test_01_g31.metrics",
                 "type": "script"
             }
         ]
@@ -133,7 +133,7 @@
           "write_to_cache": false,
           "read_from_cache": false
         },
-        "id": "EPT_RNAseqTest_g44",
+        "id": "RNAseqTest_g44",
         "metadata": {
             "arriba.fusionDiscarded": {
                 "contents": [
