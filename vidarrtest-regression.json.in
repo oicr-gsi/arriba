@@ -25,7 +25,7 @@
                 },
                 "type": "EXTERNAL"
             },
-            "arriba.outputFileNamePrefix": "test_1_g31",
+            "arriba.outputFileNamePrefix": "test_1",
             "arriba.reference": "hg38",
             "arriba.gencode": "31",
             "arriba.runArriba.additionalParameters": null,
@@ -110,7 +110,7 @@
                 },
                 "type": "EXTERNAL"
             },
-            "arriba.outputFileNamePrefix": "test_1_g44",
+            "arriba.outputFileNamePrefix": "test_1",
             "arriba.reference": "hg38",
             "arriba.gencode": "44",
             "arriba.runArriba.additionalParameters": null,
