@@ -3,7 +3,7 @@
         "arguments": {
             "arriba.indexBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/test_1.Aligned.sortedByCoord.out.bai",
+                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/EPT_Test.Aligned.sortedByCoord.out.bai",
                     "externalIds": [
                         {
                             "id": "TEST",
@@ -15,7 +15,7 @@
             },
             "arriba.inputBam": {
                 "contents": {
-                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/test_1.Aligned.sortedByCoord.out.bam",
+                    "configuration": "/.mounts/labs/gsi/testdata/arriba/test_inputs/EPT_Test.Aligned.sortedByCoord.out.bam",
                     "externalIds": [
                         {
                             "id": "TEST",
