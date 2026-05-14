@@ -2,6 +2,8 @@
 
 Workflow that takes the Bam output from STAR and detects RNA-seq fusion events. It is required to run STAR with the option --chimOutType 'WithinBAM HardClip Junctions' as per https://github.com/oicr-gsi/star to create a BAM file compatible with both the arriba and STARFusion workflows. For additional parameter suggestions please see the arriba github link below.
 
+## Overview
+
 ## Dependencies
 
 * [arriba 2.4.0](https://github.com/suhrig/arriba)
@@ -24,6 +26,7 @@ Parameter|Value|Description
 `indexBam`|File|Index for STAR Bam file
 `outputFileNamePrefix`|String|Prefix for filename
 `reference`|String|Reference id, i.e. hg38 (Currently the only one supported)
+`gencode`|String|Gencode version e.g. 44
 
 
 #### Optional workflow parameters:

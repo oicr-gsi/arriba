@@ -27,6 +27,7 @@
             },
             "arriba.outputFileNamePrefix": "test_1",
             "arriba.reference": "hg38",
+            "arriba.gencode": "44",
             "arriba.runArriba.additionalParameters": null,
             "arriba.runArriba.blacklist": null,
             "arriba.runArriba.cosmic": null,

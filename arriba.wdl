@@ -19,21 +19,33 @@ workflow arriba {
     String outputFileNamePrefix
     String reference
     File? structuralVariants
+    String gencode
   }
 
-  Map[String,ArribaResources] resources = {
+  Map[String, Map[String,ArribaResources]] resources = {
     "hg38": {
-      "blacklist": "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
-      "cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
-      "cytobands": "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv",
-      "domains": "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3",
-      "gencode": "$GENCODE_ROOT/gencode.v44.annotation.gtf",
-      "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
-      "genome": "$HG38_ROOT/hg38_random.fa",
-      "modules": "arriba/2.4.0 hg38/p12 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/44"
+      "44": {
+        "blacklist": "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
+        "cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
+        "cytobands": "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv",
+        "domains": "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3",
+        "gencode": "$GENCODE_ROOT/gencode.v44.annotation.gtf",
+        "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
+        "genome": "$HG38_ROOT/hg38_random.fa",
+        "modules": "arriba/2.4.0 hg38/p12 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/44"
+      },
+      "31": {
+        "blacklist": "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
+        "cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
+        "cytobands": "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv",
+        "domains": "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3",
+        "gencode": "$GENCODE_ROOT/gencode.v31.annotation.gtf",
+        "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
+        "genome": "$HG38_ROOT/hg38_random.fa",
+        "modules": "arriba/2.4.0 hg38/p12 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/31"
+      }
     }
   }
-
 
   parameter_meta {
     inputBam: "STAR BAM aligned to genome"
@@ -41,20 +53,21 @@ workflow arriba {
     outputFileNamePrefix: "Prefix for filename"
     reference: "Reference id, i.e. hg38 (Currently the only one supported)"
     structuralVariants: "path to structural variants for sample"
+    gencode: "Gencode version e.g. 44"
   }
 
   call runArriba {
     input:
     inputBam = inputBam,
     indexBam = indexBam,
-    modules = resources[reference].modules,
-    gencode = resources[reference].gencode,
-    genome = resources[reference].genome,
-    knownfusions = resources[reference].knownFusion,
-    cytobands = resources[reference].cytobands,
-    cosmic = resources[reference].cosmic,
-    domains = resources[reference].domains,
-    blacklist = resources[reference].blacklist,
+    modules = resources[reference][gencode].modules,
+    gencode = resources[reference][gencode].gencode,
+    genome = resources[reference][gencode].genome,
+    knownfusions = resources[reference][gencode].knownFusion,
+    cytobands = resources[reference][gencode].cytobands,
+    cosmic = resources[reference][gencode].cosmic,
+    domains = resources[reference][gencode].domains,
+    blacklist = resources[reference][gencode].blacklist,
     outputFileNamePrefix = outputFileNamePrefix,
     structuralVariants = structuralVariants
   }
@@ -66,8 +79,8 @@ workflow arriba {
   }
 
   meta {
-    author: "Alexander Fortuna"
-    email: "alexander.fortuna@oicr.on.ca"
+    author: "Alexander Fortuna, Monica L. Rojas-Pena"
+    email: "alexander.fortuna@oicr.on.ca, mrojaspena@oicr.on.ca"
     description: "Workflow that takes the Bam output from STAR and detects RNA-seq fusion events. It is required to run STAR with the option --chimOutType 'WithinBAM HardClip Junctions' as per https://github.com/oicr-gsi/star to create a BAM file compatible with both the arriba and STARFusion workflows. For additional parameter suggestions please see the arriba github link below."
     dependencies: [
     {
