@@ -5,12 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [2.4.2] - 2026-05-13
-  ### Added
-  - [GRD-1175](https://jira.oicr.on.ca/browse/GRD-1175)
-  - Added gencode as a required workflow input to support gencode version selection via olive assay_confirguration.
+### Added
+- [GRD-1175](https://jira.oicr.on.ca/browse/GRD-1175)
+- Added gencode as a required workflow input to support gencode version selection via olive assay_confirguration.
   
-  ### Changed
-  - Replaced hardcoded gencode version in module with a dinamic lookup via nested Map
+### Changed
+- Replaced hardcoded gencode version in module with a dinamic lookup via nested Map
 
 ## [2.4.1] - 2025-09-25
 ### Changed
