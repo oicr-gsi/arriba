@@ -11,10 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.4.2] - 2026-04-34
 ### Added
-- gencode parameter
-- resources for both gencode 44 and 31 versions
+- gencode parameter as a required workflow input to support gencode version selection via olive assay_confirguration.
+- resources for both gencode 44 and 31 versions, including noAlt genome
 ### Changed
 - Updated the regression tests
+- Replaced hardcoded gencode version in module with a dinamic lookup via nested Map
 
 
 ## [2.4.1] - 2025-09-25

@@ -115,6 +115,20 @@ workflow arriba {
        url: "https://www.r-project.org/"
      }
     ]
+    output_meta: {
+      fusionPredictions: {
+        description: "Fusion output tsv",
+        vidarr_label: "fusionPredictions"
+      },
+      fusionDiscarded: {
+        description: "Discarded fusion output tsv",
+        vidarr_label: "fusionDiscarded"
+      },
+      fusionFigure: {
+        description: "PDF rendering of candidate fusions",
+        vidarr_label: "fusionFigure"
+      }
+    }
   }
 }
 
@@ -186,22 +200,5 @@ task runArriba {
       File fusionPredictions        = "~{outputFileNamePrefix}.fusions.tsv"
       File fusionDiscarded          = "~{outputFileNamePrefix}.fusions.discarded.tsv"
       File fusionFigure             = "~{outputFileNamePrefix}.fusions.pdf"
-  }
-
-  meta {
-    output_meta: {
-    fusionPredictions: {
-        description: "Fusion output tsv",
-        vidarr_label: "fusionPredictions"
-    },
-    fusionDiscarded: {
-        description: "Discarded fusion output tsv",
-        vidarr_label: "fusionDiscarded"
-    },
-    fusionFigure: {
-        description: "PDF rendering of candidate fusions",
-        vidarr_label: "fusionFigure"
-    }
-}
   }
 }

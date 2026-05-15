@@ -60,7 +60,6 @@ Output | Type | Description | Labels
  Run the program on bam output from STAR and detects RNA-seq fusion events
  
  ```
- 
        arriba 
        -x INPUT_BAMS 
        -o OUTPUT_PREFIX.fusions.tsv -O OUTPUT_PREFIX.fusions.discarded.tsv 
