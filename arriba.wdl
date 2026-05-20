@@ -18,11 +18,23 @@ workflow arriba {
     File indexBam
     String outputFileNamePrefix
     String reference
+    String gencode
     File? structuralVariants
   }
 
-  Map[String,ArribaResources] resources = {
+  Map[String,Map[String,ArribaResources]] resources = {
     "hg38": {
+      "31": {
+      "blacklist": "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
+      "cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
+      "cytobands": "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv",
+      "domains": "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3",
+      "gencode": "$GENCODE_ROOT/gencode.v31.annotation.gtf",
+      "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
+      "genome": "$HG38_ROOT/hg38_random.fa",
+      "modules": "arriba/2.4.0 hg38/p12 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/31"
+      },
+      "44": {
       "blacklist": "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
       "cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
       "cytobands": "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv",
@@ -31,6 +43,51 @@ workflow arriba {
       "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
       "genome": "$HG38_ROOT/hg38_random.fa",
       "modules": "arriba/2.4.0 hg38/p12 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/44"
+      }
+    },
+    "hg38_noAlt": {
+      "31": {
+      "blacklist": "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
+      "cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
+      "cytobands": "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv",
+      "domains": "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3",
+      "gencode": "$GENCODE_ROOT/gencode.v31.annotation.gtf",
+      "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
+      "genome": "$HG38_NOALT_ROOT/hg38_noAlt.fa",
+      "modules": "arriba/2.4.0 hg38-noalt/p12 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/31"
+      },
+      "44": {
+      "blacklist": "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
+      "cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
+      "cytobands": "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv",
+      "domains": "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3",
+      "gencode": "$GENCODE_ROOT/gencode.v44.annotation.gtf",
+      "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
+      "genome": "$HG38_NOALT_ROOT/hg38_noAlt.fa",
+      "modules": "arriba/2.4.0 hg38-noalt/p12 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/44"
+      }
+    },
+    "grch38": {
+      "31": {
+      "blacklist": "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
+      "cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
+      "cytobands": "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv",
+      "domains": "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3",
+      "gencode": "$GENCODE_ROOT/gencode.v31.annotation.gtf",
+      "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
+      "genome": "$GRCH38_ROOT/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna",
+      "modules": "arriba/2.4.0 grch38/p15 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/31"
+      },
+      "44": {
+      "blacklist": "$ARRIBA_ROOT/share/database/blacklist_hg38_GRCh38_v2.4.0.tsv.gz",
+      "cosmic": "$HG38_COSMIC_FUSION_ROOT/CosmicFusionExport.tsv",
+      "cytobands": "$ARRIBA_ROOT/share/database/cytobands_hg38_GRCh38_v2.4.0.tsv",
+      "domains": "$ARRIBA_ROOT/share/database/protein_domains_hg38_GRCh38_v2.4.0.gff3",
+      "gencode": "$GENCODE_ROOT/gencode.v44.annotation.gtf",
+      "knownFusion": "$ARRIBA_ROOT/share/database/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz",
+      "genome": "$GRCH38_ROOT/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna",
+      "modules": "arriba/2.4.0 grch38/p15 samtools/1.16.1 rarriba/0.1 hg38-cosmic-fusion/v91 gencode/44"
+      }
     }
   }
 
@@ -40,6 +97,7 @@ workflow arriba {
     indexBam: "Index for STAR Bam file"
     outputFileNamePrefix: "Prefix for filename"
     reference: "Reference id, i.e. hg38 (Currently the only one supported)"
+    gencode: "Version of gencode"
     structuralVariants: "path to structural variants for sample"
   }
 
@@ -47,14 +105,14 @@ workflow arriba {
     input:
     inputBam = inputBam,
     indexBam = indexBam,
-    modules = resources[reference].modules,
-    gencode = resources[reference].gencode,
-    genome = resources[reference].genome,
-    knownfusions = resources[reference].knownFusion,
-    cytobands = resources[reference].cytobands,
-    cosmic = resources[reference].cosmic,
-    domains = resources[reference].domains,
-    blacklist = resources[reference].blacklist,
+    modules = resources[reference][gencode].modules,
+    gencode = resources[reference][gencode].gencode,
+    genome = resources[reference][gencode].genome,
+    knownfusions = resources[reference][gencode].knownFusion,
+    cytobands = resources[reference][gencode].cytobands,
+    cosmic = resources[reference][gencode].cosmic,
+    domains = resources[reference][gencode].domains,
+    blacklist = resources[reference][gencode].blacklist,
     outputFileNamePrefix = outputFileNamePrefix,
     structuralVariants = structuralVariants
   }
@@ -79,6 +137,20 @@ workflow arriba {
        url: "https://www.r-project.org/"
      }
     ]
+    output_meta: {
+      fusionPredictions: {
+        description: "Fusion output tsv",
+        vidarr_label: "fusionPredictions"
+      },
+      fusionDiscarded: {
+        description: "Discarded fusion output tsv",
+        vidarr_label: "fusionDiscarded"
+      },
+      fusionFigure: {
+        description: "PDF rendering of candidate fusions",
+        vidarr_label: "fusionFigure"
+      }
+    }
   }
 }
 
@@ -150,22 +222,5 @@ task runArriba {
       File fusionPredictions        = "~{outputFileNamePrefix}.fusions.tsv"
       File fusionDiscarded          = "~{outputFileNamePrefix}.fusions.discarded.tsv"
       File fusionFigure             = "~{outputFileNamePrefix}.fusions.pdf"
-  }
-
-  meta {
-    output_meta: {
-    fusionPredictions: {
-        description: "Fusion output tsv",
-        vidarr_label: "fusionPredictions"
-    },
-    fusionDiscarded: {
-        description: "Discarded fusion output tsv",
-        vidarr_label: "fusionDiscarded"
-    },
-    fusionFigure: {
-        description: "PDF rendering of candidate fusions",
-        vidarr_label: "fusionFigure"
-    }
-}
   }
 }

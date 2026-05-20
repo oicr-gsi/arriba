@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0] - 2026-02-06
+### Changed
+- [GRD-1019](https://jira.oicr.on.ca/browse/GRD-1019)
+- Updated genomes to include hg38_noAlt
+
+## [2.4.2] - 2026-05-15
+### Added
+- gencode parameter as a required workflow input to support gencode version selection via olive assay_confirguration.
+- resources for both gencode 44 and 31 versions, including noAlt genome
+### Changed
+- Updated the regression tests
+- Replaced hardcoded gencode version in module with a dinamic lookup via nested Map
+
+
 ## [2.4.1] - 2025-09-25
 ### Changed
 - [GRD-964](https://jira.oicr.on.ca/browse/GRD-964)
